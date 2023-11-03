@@ -38,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 const SizedBox(height: 10),
                 const Text(
                   style: TextStyle(fontSize: 32),
-                  "Load Calculator")
+                  "Loan Calculator")
                 ]
             )
           )

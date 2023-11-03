@@ -16,7 +16,7 @@ class _MyAppState extends State<MyApp> {
   TextEditingController numa = TextEditingController();
   TextEditingController numb = TextEditingController();
   TextEditingController numc = TextEditingController();
-  double montlypay = 0.0;
+  double montlypay = 0.0, totalpay = 0.0;
 
 
   @override
@@ -50,7 +50,7 @@ class _MyAppState extends State<MyApp> {
             Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                const Text("Year: ",
+                const Text("Term (Year):   ",
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                 ),
                 Flexible(child: TextField(
@@ -78,11 +78,46 @@ class _MyAppState extends State<MyApp> {
                 ))
               ],
             ),
-            ElevatedButton(onPressed: onPressed, child: const Text("Calculate")),
+
+
+            const SizedBox(height: 12,),  
+
+            SizedBox(      
+              width: 327,
+              height: 50,
+              child: ElevatedButton(
+                onPressed: onPressed,
+                child: const Text("Calculate")),
+            ),
+
+            const SizedBox(height: 20,),
+
+            Row(
+              mainAxisAlignment:MainAxisAlignment.start,
+              children: [
+            const Text(
+              "Montly payment: ",
+              style: TextStyle(fontSize: 20),
+            ),
             Text(
               montlypay.toStringAsFixed(2),
-              style: const TextStyle(fontSize: 50),
+              style: const TextStyle(fontSize: 20),
             )
+            ]
+            ),
+            Row(
+              mainAxisAlignment:MainAxisAlignment.start,
+              children: [
+            const Text(
+              "Total payment: ",
+              style: TextStyle(fontSize: 20),
+            ),
+            Text(
+              totalpay.toStringAsFixed(2),
+              style: const TextStyle(fontSize: 20),
+            )
+            ]
+            ),
           ],
           )
         ),
@@ -97,6 +132,7 @@ class _MyAppState extends State<MyApp> {
     int ttmonth = int.parse(numb.text)*12;
     montlypay = lamount/(((pow((1+pinterest), ttmonth))-1)/(pinterest*(pow((1+pinterest), ttmonth))));
     setState(() {});
+    totalpay = ttmonth*montlypay;
   }
 }
 
